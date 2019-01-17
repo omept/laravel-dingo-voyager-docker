@@ -1,0 +1,368 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": " API Starter",
+        "description": "This is a simple API starter",
+        "contact": {
+            "url": "https://about.me/george_onwuasoanya"
+        },
+        "version": "1.0"
+    },
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/x-www-form-urlencoded"
+    ],
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logs the user in and sends JWT token to be sent with every request with the user's detail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "User's email   ",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "User's password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "authorization token with user's data"
+                    }
+                }
+            }
+        },
+        "/api/auth/sign-up": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register the user and sends JWT token to be sent with every request with the user's detail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "User's email  ",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "User's name  ",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "User's password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "User's phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "in": "formData",
+                        "description": "User's date_of_birth",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_type_id",
+                        "in": "formData",
+                        "description": "User's user_type_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "description": "User's gender. 1=male; 0=female",
+                        "required": false,
+                        "type": "string",
+                        "default": 1
+                    },
+                    {
+                        "name": "app_version",
+                        "in": "formData",
+                        "description": "User's app_version",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "authorization token with user's data"
+                    }
+                }
+            }
+        },
+        "/api/auth/send-password-reset-link": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "send password reset link",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "send User's password reset link",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "send password reset link"
+                    }
+                }
+            }
+        },
+        "/api/auth/profile-update": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Updates the user's details",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "User's email  ",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "User's phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "in": "formData",
+                        "description": "User's date_of_birth",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "description": "User's gender. 1=male; 0=female",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profile_pic_url",
+                        "in": "formData",
+                        "description": "User's profile pic url",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_type_id",
+                        "in": "formData",
+                        "description": "User's user_type_id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "User's name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "water_measurement",
+                        "in": "formData",
+                        "description": "User's water measurement",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "water_daily_intake_target",
+                        "in": "formData",
+                        "description": "User's water daily intake target",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "push_notification_token",
+                        "in": "formData",
+                        "description": "User's onesignal push_notification_token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "User's authorization token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "app_version",
+                        "in": "formData",
+                        "description": "User's app_version",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "authorization token with user's data"
+                    }
+                }
+            }
+        },
+        "/api/auth/user": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get logged in user details using token gotten from login",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "authorization token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "user's data"
+                    }
+                }
+            }
+        },
+        "/api/auth/invalidate": {
+            "delete": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Invalidate/Delete user authorization token using previous token",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "authorization token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success message"
+                    }
+                }
+            }
+        },
+        "/api/auth/update-password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Update password of an account",
+                "parameters": [
+                    {
+                        "name": "old_password",
+                        "in": "formData",
+                        "description": "User's old password   ",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "User's password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "confirm_password",
+                        "in": "formData",
+                        "description": "User's confirm_password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "authorization token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update the password of an account."
+                    }
+                }
+            }
+        },
+        "/api/auth/refresh": {
+            "patch": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Refresh user authorization token details using previous token",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "authorization token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "new authorization token"
+                    }
+                }
+            }
+        },
+        "/api/auth/user-types": {
+            "get": {
+                "tags": [
+                    "Config"
+                ],
+                "summary": "Get app  user type details",
+                "responses": {
+                    "200": {
+                        "description": "user's data"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "externalDocs": {
+        "description": "Find out more about the package",
+        "url": "http://goo.gl"
+    }
+}
